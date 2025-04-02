@@ -1,10 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "fodraszat";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$config = require './config.php';
+
+$conn = new mysqli($config['server_name'], $config['user_name'], $config['password'], $config['dbname']);
 
 if ($conn->connect_error) {
     die("Kapcsolódási hiba: " . $conn->connect_error);
