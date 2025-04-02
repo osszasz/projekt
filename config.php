@@ -1,10 +1,14 @@
 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "fodraszat";
 
+// Kapcsolat létrehozása
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-return [
-    'server_name' => 'localhost',
-    'user_name' => 'root',
-    'password' => '',
-    'dbname' => 'fodraszat',
-
-];
+// Kapcsolat ellenőrzése
+if ($conn->connect_error) {
+    die("Kapcsolódási hiba: " . $conn->connect_error);
+}
+?>

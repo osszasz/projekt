@@ -2,7 +2,9 @@
 
 $config = require './config.php';
 
-$conn = new mysqli($config['server_name'], $config['user_name'], $config['password'], $config['dbname']);
+$dbConfig = $config['database'];
+
+$conn = new mysqli($dbConfig['server_name'], $dbConfig['user_name'], $dbConfig['password'], $dbConfig['dbname']);
 
 if ($conn->connect_error) {
     die("Kapcsolódási hiba: " . $conn->connect_error);
