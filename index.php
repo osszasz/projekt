@@ -1,139 +1,578 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fodrászat - Kezdőlap</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: black;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background-color: #FFD700;
-            color: black;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: black;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .services, .booking {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: white;
-        }
-        .service-item, .booking-form {
-            margin: 20px 0;
-        }
-        input, select, button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px;
-            width: 80%;
-            max-width: 400px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: black;
-            color: white;
-            margin-top: 50px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Sheep Barber Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background-color: #fff;
+      color: #1a1a1a;
+    }
+
+    header {
+      background-color: #000;
+      height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 50px;
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 30px;
+    }
+
+    .menu {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      background-color: #d4af72;
+      border: none;
+      padding: 15px 30px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 80px 50px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .salon-chooser {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .salon-box {
+      width: 300px;
+      height: 400px;
+      background-color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px black;
+      position: relative;
+    }
+
+    .highlight {
+      background-color: #d4af72;
+      padding: 5px 10px;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .about-section {
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 50px;
+    }
+
+    .about-text {
+      flex: 1;
+      margin-right: 50px;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .newsletter-section {
+      background-color: #d4af72;
+      color: white;
+      padding: 60px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .newsletter-text {
+      flex: 1;
+      margin-right: 30px;
+    }
+
+    .newsletter-form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .newsletter-form input[type="text"],
+    .newsletter-form input[type="email"] {
+      padding: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      padding: 10px;
+      background: #000;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .price-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .price-tabs button {
+      padding: 10px 20px;
+      background: #eee;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .price-tabs button.active {
+      background: #d4af72;
+      color: #fff;
+    }
+
+    .price-list {
+      max-width: 800px;
+      margin: auto;
+      display: none;
+    }
+
+    .price-list.active {
+      display: block;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .featured-barber,
+    .partners-section {
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .featured-barber img,
+    .partner-box img {
+      max-width: 200px;
+      margin-bottom: 15px;
+    }
+
+    .partner-list {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .partner-box {
+      max-width: 300px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+    .salon-box {
+  display: inline-block;
+  padding: 2rem;
+  border: 2px solid #000;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  font-weight: bold;
+}
+
+  </style>
+  <script>
+    function showPriceList(id) {
+      document.querySelectorAll('.price-list').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.price-tabs button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelector(`[data-target="${id}"]`).classList.add('active');
+    }
+  </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Fodrászat</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Kezdőlap</a></li>
-                    <li><a href="#services">Szolgáltatások</a></li>
-                    <li><a href="#booking">Időpontfoglalás</a></li>
-                    <li><a href="#team">Csapat</a></li>
-                    <li><a href="#contact">Kapcsolat</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <section id="home">
-        <div class="hero">
-            <h2>Üdvözlünk a Fodrászatunkban</h2>
-            <p>Professzionális szolgáltatások modern környezetben.</p>
-            <a href="#booking" class="btn">Foglalj időpontot</a>
-        </div>
-    </section>
-    
-    <section id="services" class="services">
-        <h2>Szolgáltatásaink</h2>
-        <div class="service-item">
-            <h3>Hajvágás</h3>
-            <p>Precíz és divatos hajvágás minden korosztálynak.</p>
-        </div>
-        <div class="service-item">
-            <h3>Hajfestés</h3>
-            <p>Professzionális hajfestés prémium minőségű termékekkel.</p>
-        </div>
-        <div class="service-item">
-            <h3>Férfi borotválás</h3>
-            <p>Klasszikus és modern borotválási technikák.</p>
-        </div>
-    </section>
-    
-    <section id="booking" class="booking">
-        <h2>Időpontfoglalás</h2>
-        <form action="booking_handler.php" method="post" class="booking-form">
-            <label for="name">Név:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="service">Szolgáltatás:</label>
-            <select id="service" name="service" required>
-                <option value="hajvagas">Hajvágás</option>
-                <option value="hajfestes">Hajfestés</option>
-                <option value="borotvalas">Férfi borotválás</option>
-            </select>
-            
-            <label for="date">Dátum:</label>
-            <input type="date" id="date" name="date" required>
-            
-            <label for="time">Időpont:</label>
-            <input type="time" id="time" name="time" required>
-            
-            <button type="submit">Foglalás</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 Fodrászat. Minden jog fenntartva.</p>
-    </footer>
+  <header>
+    <img src="#" alt="Black Sheep logo" class="logo">
+    <nav class="menu">
+      <a href="#rolunk">Rólunk</a>
+      <a href="#arlista">Árlista</a>
+      <a href="#galeria">Galéria</a>
+      <a href="#webshop">Webshop</a>
+      <a href="#csapat">Borbélyaink</a>
+      <a href="#kapcsolat">Kapcsolat</a>
+    </nav>
+    <button class="btn">IDŐPONTFOGLALÁS</button>
+  </header>
+
+  <section id="valasztszalon">
+  <h2 class="section-title">Válassz szalont</h2>
+  <div class="salon-chooser">
+    <div class="salon-box" data-salon="karoly">KÁROLY<br><span style="font-size: 1rem;">körút 7.</span></div>
+    <div class="salon-box" data-salon="erzsebet">ERZSÉBET<br><span style="font-size: 1rem;">körút 34.</span></div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.salon-box').forEach(box => {
+    box.addEventListener('click', () => {
+      const salon = box.getAttribute('data-salon');
+      window.location.href = `booking.php?salon=${salon}`;
+    });
+  });
+</script>
+
+
+
+  <section id="rolunk" class="about-section">
+    <div class="about-text">
+      <h2>Black Sheep Barber Shop</h2>
+      <p><span class="highlight">Egy hely, ahol igazán férfinak érezheted magad.</span> Retro stílus és jó hangulat a belváros szívében. Szakértő borbélyaink oldschool környezetben vágják a legtrendibb frizurákat és szakállakat. Prémium kiszolgálás, hideg sör, barátságos légkör.</p>
+    </div>
+    <div class="about-image"><!-- Kép ide jön --></div>
+  </section>
+
+  <section class="newsletter-section">
+    <div class="newsletter-text">
+      <h2>Miért éri ez meg neked?</h2>
+      <p>Elsőként értesülhetsz akcióinkról, újdonságainkról. Feliratkozóként Skip The Line előnyt kapsz, és exkluzív kedvezményekhez juthatsz.</p>
+    </div>
+    <form class="newsletter-form">
+      <input type="text" placeholder="Név">
+      <input type="email" placeholder="Email cím">
+      <button type="submit">JELENTKEZEM!</button>
+    </form>
+  </section>
+
+  <section id="arlista">
+    <h2 class="section-title">Árlista</h2>
+    <div class="price-tabs">
+      <button class="active" data-target="normal" onclick="showPriceList('normal')">Normál</button>
+      <button data-target="master" onclick="showPriceList('master')">Master</button>
+      <button data-target="senior" onclick="showPriceList('senior')">Senior</button>
+    </div>
+    <div id="normal" class="price-list active">
+      <div class="price-item"><span>Férfi hajvágás</span><span>6 000 Ft</span></div>
+      <div class="price-item"><span>Szakáll igazítás</span><span>3 000 Ft</span></div>
+      <div class="price-item"><span>Teljes csomag</span><span>8 500 Ft</span></div>
+    </div>
+    <div id="master" class="price-list">
+      <div class="price-item"><span>Férfi hajvágás</span><span>7 500 Ft</span></div>
+      <div class="price-item"><span>Szakáll igazítás</span><span>4 000 Ft</span></div>
+      <div class="price-item"><span>Teljes csomag</span><span>10 000 Ft</span></div>
+    </div>
+    <div id="senior" class="price-list">
+      <div class="price-item"><span>Férfi hajvágás</span><span>9 000 Ft</span></div>
+      <div class="price-item"><span>Szakáll igazítás</span><span>5 000 Ft</span></div>
+      <div class="price-item"><span>Teljes csomag</span><span>11 500 Ft</span></div>
+    </div>
+  </section>
+
+  <section id="honapborbelya" class="featured-barber">
+    <h2 class="section-title">A hónap borbélya</h2>
+    <img src="#" alt="Borbély portréja">
+    <h3>Richárd</h3>
+    <p>Precíz, gyors és mindig mosolyog. A vendégeink kedvence, nem véletlenül ő a hónap borbélya!</p>
+    <button class="btn">Bővebben</button>
+  </section>
+
+  <section id="partnerek" class="partners-section">
+    <h2 class="section-title">Partnereink</h2>
+    <div class="partner-list">
+      <div class="partner-box">
+        <img src="#" alt="Skin City logo">
+        <h4>Skin City</h4>
+        <p>Barber után arctisztítás vagy tetoválás? Náluk garantált a prémium minőség.</p>
+        <button class="btn">Érdekel</button>
+      </div>
+      <div class="partner-box">
+        <img src="#" alt="Raccoon Lab logo">
+        <h4>Raccoon Lab</h4>
+        <p>Marketing, web és dizájn – ők felelnek a Black Sheep online arculatáért.</p>
+        <button class="btn">Bővebben</button>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Sheep Barber Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background-color: #fff;
+      color: #1a1a1a;
+    }
+
+    header {
+      background-color: #000;
+      height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 50px;
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 30px;
+    }
+
+    .menu {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      background-color: #d4af72;
+      border: none;
+      padding: 15px 30px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 80px 50px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .salon-chooser {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .salon-box {
+      width: 300px;
+      height: 400px;
+      background-color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px black;
+      position: relative;
+    }
+
+    .highlight {
+      background-color: #d4af72;
+      padding: 5px 10px;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .about-section {
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 50px;
+    }
+
+    .about-text {
+      flex: 1;
+      margin-right: 50px;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .newsletter-section {
+      background-color: #d4af72;
+      color: white;
+      padding: 60px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .newsletter-form input[type="text"],
+    .newsletter-form input[type="email"] {
+      padding: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      padding: 10px;
+      background: #000;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .price-tabs,
+    .voucher-list,
+    .team-grid,
+    .partner-list {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .price-item,
+    .voucher-box,
+    .team-member,
+    .partner-box {
+      border: 1px solid #ccc;
+      padding: 20px;
+      background: #fff;
+      text-align: center;
+      max-width: 300px;
+    }
+
+    .voucher-box h3,
+    .team-member h4 {
+      margin-bottom: 10px;
+    }
+
+    .contact-section {
+      background-color: #f4f4f4;
+      padding: 60px 50px;
+    }
+
+    .contact-info {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-info p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- ... eddigi szekciók ... -->
+
+  <section id="utalvanyok">
+    <h2 class="section-title">Ajándékutalványok</h2>
+    <div class="voucher-list">
+      <div class="voucher-box">
+        <h3>Normál</h3>
+        <p>Stílusos ajándék férfiaknak alap csomaggal</p>
+        <button class="btn">Vásárlás</button>
+      </div>
+      <div class="voucher-box">
+        <h3>Master</h3>
+        <p>Tapasztalt borbélyainktól extra kiszolgálással</p>
+        <button class="btn">Vásárlás</button>
+      </div>
+      <div class="voucher-box">
+        <h3>Senior</h3>
+        <p>Top szintű prémium élmény, ajándék extra</p>
+        <button class="btn">Vásárlás</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="csapat">
+    <h2 class="section-title">Borbélyaink</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="#" alt="Kálmi" style="width:100%">
+        <h4>Kálmi</h4>
+        <p>Master Barber</p>
+      </div>
+      <div class="team-member">
+        <img src="#" alt="Benze" style="width:100%">
+        <h4>Benze</h4>
+        <p>Senior Barber</p>
+      </div>
+      <div class="team-member">
+        <img src="#" alt="Petya" style="width:100%">
+        <h4>Petya</h4>
+        <p>Barber</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kapcsolat" class="contact-section">
+    <h2 class="section-title">Kapcsolat</h2>
+    <div class="contact-info">
+      <p><strong>Károly körút 7.</strong></p>
+      <p><strong>Erzsébet körút 34.</strong></p>
+      <p>Telefon: +36 30 123 4567</p>
+      <p>Email: info@blacksheep.hu</p>
+      <p>Nyitvatartás: H-P 10:00–20:00, Sz 9:00–18:00</p>
+      <br>
+      <iframe src="https://www.google.com/maps" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  </section>
+
 </body>
 </html>
