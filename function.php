@@ -12,11 +12,11 @@ function getConnection() {
     return $conn;
 }
 
-function saveBooking($name, $service, $date, $time) {
+function saveBooking($name, $email, $salon, $service, $barber, $datetime) {
     $conn = getConnection();
-    $sql = "INSERT INTO foglalasok (nev, szolgaltatas, datum, ido) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $name, $service, $date, $time);
+    $stmt = $conn->prepare("INSERT INTO foglalasok (nev, email, szalon, szolgaltatas, borbely, datumido) VALUES (?, ?, ?, ?, ?, ?)");
+    if (!$stmt) return false;
+    $stmt->bind_param("ssssss", $name, $email, $salon, $service, $barber, $datetime);
     $success = $stmt->execute();
     $stmt->close();
     $conn->close();
@@ -35,4 +35,3 @@ function getServices() {
     $conn->close();
     return $services;
 }
-?>
